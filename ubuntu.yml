@@ -93,7 +93,7 @@
         path: /home/ubuntu/elasticsearch
         state: directory
 
-    - name: Copying docker file
+    - name: Copying docker and elasticsearch files
       copy:
         src: "{{ item }}"
         dest: /home/ubuntu/elasticsearch/
