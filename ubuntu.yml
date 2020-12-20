@@ -88,7 +88,7 @@
         groups: docker
         append: yes
 
-    - name: Creating a nodejs directory
+    - name: Creating a elasticsearch temp directory
       file:
         path: /home/ubuntu/elasticsearch
         state: directory
@@ -112,7 +112,7 @@
       docker_volume:
         name: esdata
 
-    - name: Create Nodejs-webapp container
+    - name: Create elasticsearch container
       docker_container:
         name: elasticsearch
         image: roshanjoseph23/esimage:v1
