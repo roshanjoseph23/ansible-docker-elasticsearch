@@ -44,24 +44,24 @@
   become: true
   tasks:
     - name: Updating apt-get
-      apt: 
-        update_cache: yes
-        force_apt_get: yes
+      shell: apt-get update -y
+      args:
+        warn: false
 
     - name: Installing packages
       apt:
-        name: "{{ item }}"
+        name: [
+               "apt-transport-https", 
+               "ca-certificates", 
+               "curl", 
+               "software-properties-common", 
+               "python3-pip", 
+               "virtualenv", 
+               "python3-setuptools", 
+               "unzip", 
+               "npm"
+              ]
         state: latest 
-      with_items: 
-        - apt-transport-https
-        - ca-certificates
-        - curl
-        - software-properties-common
-        - python3-pip
-        - virtualenv
-        - python3-setuptools
-        - unzip
-        - npm
 
     - name: Add Docker GPG apt Key
       apt_key:
